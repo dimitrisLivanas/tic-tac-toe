@@ -30,8 +30,14 @@ class Game
 
   def make_move
     loop do
-      puts "#{@current_player.name}'s turn. Enter your move (row, COMMA, column): ".blue
+      puts "#{@current_player.name}'s turn. Choose your move by entering row and column: ".blue
       input = gets.chomp.split(/[,\s]+/).map(&:to_i)
+
+      if input.length < 2
+        puts "Please enter both row and column.".red
+        next
+      end
+
       row, col = input[0], input[1]
 
       if row.between?(0, 2) && col.between?(0, 2) && @board.grid[row][col].nil?
