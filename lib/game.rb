@@ -31,7 +31,7 @@ class Game
   def make_move
     loop do
       puts "#{@current_player.name}'s turn. Enter your move (row, COMMA, column): ".blue
-      input = gets.chomp.split(',').map(&:to_i)
+      input = gets.chomp.split(/[,\s]+/).map(&:to_i)
       row, col = input[0], input[1]
 
       if row.between?(0, 2) && col.between?(0, 2) && @board.grid[row][col].nil?
