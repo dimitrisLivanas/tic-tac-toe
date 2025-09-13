@@ -49,7 +49,7 @@ class Board
 
   def check_diagonals
     diagonal1 = [@grid[0][0], @grid[1][1], @grid[2][2]]
-    diagonal2 = [@grid[0][2], @grid[1][1], @grid[2][1]]
+    diagonal2 = [@grid[0][2], @grid[1][1], @grid[2][0]]
 
     check_grid_lines([diagonal1, diagonal2])
   end
