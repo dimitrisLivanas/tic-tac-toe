@@ -1,6 +1,8 @@
 require_relative 'board'
 require_relative 'player'
 
+require 'colorize'
+
 class Game
   def initialize
     @board = Board.new
@@ -15,10 +17,10 @@ class Game
       @board.display
       make_move
       if @board.winner
-        puts "#{@current_player.name} wins!"
+        puts "#{@current_player.name} wins!".green
         game_over = true
       elsif @board.draw?
-        puts "It's a draw!"
+        puts "It's a draw!".yellow
         game_over = true
       end
       switch_player unless game_over
@@ -28,7 +30,7 @@ class Game
 
   def make_move
     loop do
-      puts "#{@current_player.name}'s turn. Enter your move (row, COMMA, column): "
+      puts "#{@current_player.name}'s turn. Enter your move (row, COMMA, column): ".blue
       input = gets.chomp.split(',').map(&:to_i)
       row, col = input[0], input[1]
 
@@ -36,7 +38,7 @@ class Game
         @board.update_grid(row, col, @current_player.symbol)
         break
       else
-        puts "Invalid move. Please try again."
+        puts "Invalid move. Please try again.".red
       end
     end
   end
