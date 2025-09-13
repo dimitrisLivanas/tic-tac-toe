@@ -14,8 +14,16 @@ class Board
     end
   end
 
+  def update_grid(row, column, value)
+    @grid[row][column] = value
+  end
+
   def winner
     check_rows || check_columns || check_diagonals
+  end
+
+  def draw?
+    !@grid.flatten.include?(nil) && winner.nil?
   end
 
   private
