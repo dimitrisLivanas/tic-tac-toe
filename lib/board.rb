@@ -13,4 +13,34 @@ class Board
       end
     end
   end
+
+  def winner
+    check_rows || check_columns || check_diagonals
+  end
+
+  private
+
+  def check_grid_lines(grid)
+    grid.each do |row|
+      if !row[0].nil? && row.all? { |element| element == row[0]}
+        return row[0]
+      end
+    end
+    nil
+  end
+
+  def check_rows
+    check_grid_lines(@grid)
+  end
+
+  def check_columns
+    check_grid_lines(@grid.transpose)
+  end
+
+  def check_diagonals
+    diagonal1 = [@grid[0][0], @grid[1][1], @grid[2][2]]
+    diagonal2 = [@grid[0][2], @grid[1][1], @grid[2][1]]
+
+    check_grid_lines([diagonal1, diagonal2])
+  end
 end
