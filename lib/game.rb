@@ -28,7 +28,7 @@ class Game
 
   def make_move
     loop do
-      puts "#{@current_player.name}'s turn. Enter your move (row, column): "
+      puts "#{@current_player.name}'s turn. Enter your move (row, COMMA, column): "
       input = gets.chomp.split(',').map(&:to_i)
       row, col = input[0], input[1]
 
